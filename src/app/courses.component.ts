@@ -3,11 +3,21 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-courses',
   template: `
-   <button [style.backgroundColor]="isActive ?'blue' : 'white'">Save</button>
+    <div (click)="onDivClicked()">
+      <button (click)="onSave($event)" >Save</button>
+    </div>
   `
 })
 
 export class CoursesComponent {
-  isActive = false;
+  onDivClicked() {
+    console.log('Div was clicked');
+  }
+  onSave($event) {
+    $event.stopPropagation();
+
+    console.log('Button was clicked', $event);
+  }
+
 
 }
