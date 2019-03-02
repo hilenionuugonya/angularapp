@@ -3,15 +3,21 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 @Component({
   selector: 'app-favorite',
   templateUrl: './favorite.component.html',
-  styleUrls: ['./favorite.component.css']
+  styleUrls: ['./favorite.component.css'],
+  styles: [
+    `
+    .fa-address-book-empty{
+  color: green;
+}
+      .fa-address-book{
+        background: blue;
+      }
+    `
+  ]
 })
-export class FavoriteComponent implements OnInit {
+export class FavoriteComponent {
  @Input('isFavorite') isSelected: boolean;
  @Output('change') click = new EventEmitter();
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   onClick() {
     this.isSelected = !this.isSelected;
