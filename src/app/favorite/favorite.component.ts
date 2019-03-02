@@ -4,16 +4,6 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
   selector: 'app-favorite',
   templateUrl: './favorite.component.html',
   styleUrls: ['./favorite.component.css'],
-  styles: [
-    `
-    .fa-address-book-empty{
-  color: green;
-}
-      .fa-address-book{
-        background: blue;
-      }
-    `
-  ]
 })
 export class FavoriteComponent {
  @Input('isFavorite') isSelected: boolean;
