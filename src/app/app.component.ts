@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {FavoriteChangeEventArgs} from './favorite/favorite.component';
 
 
 
@@ -9,9 +8,5 @@ import {FavoriteChangeEventArgs} from './favorite/favorite.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  tweet = {
-    body: '...',
-    likesCount: 10,
-    isLiked: true
-  }
+  courses = [1, 2];
 }
