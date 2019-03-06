@@ -1,11 +1,9 @@
-<style>
-  fa-address-book{
-    color: red;
-  }
-</style>
+
 <span
   class ="fa fa-2x "
-  [class.fa-address-book] ='isSelected'
-  [class.fa-address-card]='!isSelected'
+  [ngclass]="{
+    'fa-address-book':isSelected,
+    'fa-address-card':!isSelected
+  }"
   (click)='onClick()'
 ></span>
