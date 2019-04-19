@@ -21,6 +21,9 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import {SignupFormComponent} from './signup-form/signup-form.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { PostsComponent } from './posts/posts.component';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ZippyComponent,
     ContactFormComponent,
     NewCourseFormComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    PostsComponent
 
 
 
@@ -49,7 +53,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    HttpClientModule
   ],
   providers: [
     CoursesService,
