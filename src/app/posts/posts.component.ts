@@ -10,17 +10,28 @@ import {HttpClient} from '@angular/common/http';
 })
 export class PostsComponent {
   posts: any;
+  private url = 'https://jsonplaceholder.typicode.com/posts' ;
   private handleError(error: any): Promise<any> {
     console.log('An error occured ', error);
     return Promise.reject(error.message || error);
 }
 
 
-  constructor( http: HttpClient) {
-    http.get('https://jsonplaceholder.typicode.com/posts')
+  constructor( private http: HttpClient) {
+    http.get(this.url)
       .subscribe(response => {
         this.posts = response;
-        console.log('Posts ' + JSON.stringify(response));
+      });
+  }
+
+  createPost(input: HTMLInputElement) {
+    const post: any = {title: input.value };
+    input.value = '';
+
+    this.http.post(this.url, JSON.stringify(post))
+      .subscribe(response => {
+        post['id'] = response.id;
+        this.posts.splice(0, 0, post);
       });
   }
 
