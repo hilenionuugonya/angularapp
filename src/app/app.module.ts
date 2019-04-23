@@ -23,6 +23,7 @@ import {SignupFormComponent} from './signup-form/signup-form.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostsComponent } from './posts/posts.component';
 import {HttpClientModule} from '@angular/common/http';
+import {PostService} from './services/post.service';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
+    PostService,
     CoursesService,
     AuthorsService
   ],
