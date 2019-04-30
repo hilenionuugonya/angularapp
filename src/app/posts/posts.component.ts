@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {PostService} from '../services/post.service';
 import {AppError} from '../common/app-error';
 import {NotFoundError} from '../common/not-found-error';
+import {BadInput} from '../common/bad-input';
 
 
 @Component({
@@ -39,9 +40,12 @@ export class PostsComponent implements OnInit {
         this.posts.splice(0, 0, post);
         },
         (error: AppError) => {
-                if (error instanceof NotFoundError) {
-          alert('An unexpected error occurred.');
-        console.log(error);
+          if (error instanceof BadInput) {
+            // this.form.setErrors(error.originalError);
+          }
+          else {
+            alert('An unexpected error occurred.');
+            console.log(error);
         }
       });
   }
