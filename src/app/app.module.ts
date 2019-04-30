@@ -24,6 +24,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { PostsComponent } from './posts/posts.component';
 import {HttpClientModule} from '@angular/common/http';
 import {PostService} from './services/post.service';
+import { CommonComponent } from './common/common.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {PostService} from './services/post.service';
     ContactFormComponent,
     NewCourseFormComponent,
     ChangePasswordComponent,
-    PostsComponent
+    PostsComponent,
+    CommonComponent
 
 
 
