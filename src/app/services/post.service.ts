@@ -26,7 +26,7 @@ export class PostService {
           return Observable.throw(new BadInput(error));
 
         return Observable.throw(new AppError(error));
-      });
+      }));
 
   }
 
