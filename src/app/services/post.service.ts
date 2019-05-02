@@ -3,13 +3,11 @@ import {HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import {AppError} from '../common/app-error';
+import { AppErrorHandler} from '../common/app-error-handler';
 import {NotFoundError} from '../common/not-found-error';
 import {BadInput} from '../common/bad-input';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PostService {
    private url = 'https://jsonplaceholder.typicode.com/posts' ;
 
@@ -20,13 +18,13 @@ export class PostService {
   }
 
   createPost(post) {
-    return this.http.post(this.url, JSON.stringify(post)
+    return this.http.post(this.url, JSON.stringify(post))
       .catch((error: Response) => {
-        if (error.status === 400)
-          return Observable.throw(new BadInput(error));
-
-        return Observable.throw(new AppError(error));
-      }));
+        if (error.status === 404) {
+          return Observable.throw(new NotFoundError());
+        }
+        return Observable.throw(new AppErrorHandler());
+      });
 
   }
 
@@ -37,9 +35,10 @@ export class PostService {
   deletePost(id) {
     return this.http.delete(this.url + '/' + id)
       .catch((error: Response) => {
-        if (error.status === 404)
-          return Observable.throw(new NotFoundError());                                                                                                              7
-        return Observable.throw(new AppError(error));
+        if (error.status === 404) {
+          return Observable.throw(new NotFoundError());
+        }
+        return Observable.throw(new AppErrorHandler());
       });
   }
 }

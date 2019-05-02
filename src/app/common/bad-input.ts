@@ -1,4 +1,4 @@
-import {AppError} from './app-error';
+import {AppErrorHandler} from './app-error-handler';
 
 
-export class BadInput extends AppError { }
+export class BadInput extends AppErrorHandler { }

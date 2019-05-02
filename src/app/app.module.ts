@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { PostsComponent } from './posts/posts.component';
 import {HttpClientModule} from '@angular/common/http';
 import {PostService} from './services/post.service';
 import { CommonComponent } from './common/common.component';
+import {AppErrorHandler} from './common/app-error-handler';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { CommonComponent } from './common/common.component';
   providers: [
     PostService,
     CoursesService,
-    AuthorsService
+    AuthorsService,
+    {provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
