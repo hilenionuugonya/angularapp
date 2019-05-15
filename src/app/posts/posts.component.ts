@@ -20,19 +20,17 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getPosts()
-      .subscribe(response => {
-        this.posts = response;
-      });
+    this.service.getAll()
+      .subscribe(posts => this.posts = posts);
   }
 
   createPost(input: HTMLInputElement) {
     const post = {title: input.value};
     input.value = '';
 
-    this.service.createPost(post)
-      .subscribe(response => {
-        post['id'] = response['id'];
+    this.service.create(post)
+      .subscribe(newPost => {
+        post['id'] = newPost.id;
         this.posts.splice(0, 0, post);
         },
         (error: AppErrorHandler ) => {
@@ -44,14 +42,14 @@ export class PostsComponent implements OnInit {
   }
 
   updatePost(post) {
-    this.service.updatePost(post)
-      .subscribe(response => {
-        console.log(response);
+    this.service.update(post)
+      .subscribe(updatedPost => {
+        console.log(updatedPost);
         } );
   }
   deletePost(post) {
-    this.service.deletePost(345)
-      .subscribe(response => {
+    this.service.delete(345)
+      .subscribe(() => {
         const index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
         },
